@@ -1,0 +1,8 @@
+<?xml version="1.0" ?>
+<config>
+    <modules>
+        <TM_BannerModule>
+            <version>0.0.1</version>
+        </TM_BannerModule>
+    </modules>
+</config>
