@@ -1,6 +1,12 @@
 <?xml version="1.0"?>
 <page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="1column" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <!-- for js file -->
+    <!--<script src="TM_BannerModule::js/banner_script.js"/>-->
+    </head>
+    <body>
     <referenceContainer name="content">
         <block class="TM\BannerModule\Block\Banner" name="banner_module.bannerpage" template="TM_BannerModule::banner.phtml" />
     </referenceContainer>
+    </body>
 </page>

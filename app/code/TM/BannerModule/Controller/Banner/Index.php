@@ -6,6 +6,7 @@ use Magento\Framework\App\Action\HttpPostActionInterface;
 use Magento\Framework\App\RequestInterface;
 use Magento\Framework\View\Result\Page;
 use Magento\Framework\View\Result\PageFactory;
+use \Magento\Store\Model\StoreManagerInterface;
 
 class Index implements HttpGetActionInterface, HttpPostActionInterface
 {
@@ -27,6 +28,8 @@ class Index implements HttpGetActionInterface, HttpPostActionInterface
     {
         $this->pageFactory = $pageFactory;
         $this->request = $request;
+
+
     }
 
     /**

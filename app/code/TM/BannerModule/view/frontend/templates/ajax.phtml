@@ -1,0 +1,31 @@
+
+<?php
+/*view templ*/
+
+ini_set('memory_limit', '2048M');
+/* @var TM\BannerModule\Block\Banner $block */
+function UTCToTimestamp($datetime_str) {
+    $date = new DateTime($datetime_str);
+    return  $date->getTimestamp();
+}
+
+$banners = $block -> getAllBanners();
+$nowTime = time();
+$arOneShow = explode(',',$block -> getOneShowData());
+
+?>
+
+    <?php
+    foreach ($banners as $banner){
+
+        if($banner->getImage()){
+            $timeFrom = UTCToTimestamp($banner -> getDateFrom());
+            $timeTo = UTCToTimestamp($banner -> getDateTo());
+            if($nowTime > $timeTo || $nowTime< $timeFrom || in_array($banner->getId(),$arOneShow)) continue;
+            ?><div><img <?php echo $banner->getOneShow() == 1 ? 'data-oneshow data-id="'.$banner->getId().'"' : ''; ?> src="<?=$banner->getImageUrl();?>"></div><?php
+            break;
+        }
+    }
+
+    ?>
+

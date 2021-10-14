@@ -16,9 +16,15 @@ class Banner extends \Magento\Framework\View\Element\Template
         parent::__construct($context, $data);
         $this->collection = $collection;
     }
-
+    public function getBaseUrl()
+    {
+        return $this->_storeManager->getStore()->getBaseUrl();
+    }
     public function getAllBanners() {
         return $this->collection;
     }
-
+    public function getOneShowData()
+    {
+        return $this->getOneshow();
+    }
 }
