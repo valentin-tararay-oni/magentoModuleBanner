@@ -1,0 +1,11 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:App/etc/routes.xsd">
+<router id="standard">
+    <route id="my_module" frontName="my_module">
+        <module name="GM_MyModule" />
+    </route>
+    <route id="my_route" frontName="my_route">
+        <module name="GM_MyModule" />
+    </route>
+</router>
+</config>

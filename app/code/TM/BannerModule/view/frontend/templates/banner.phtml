@@ -1,8 +1,8 @@
 
 <?php
+/*view templ*/
 ini_set('memory_limit', '2048M');
 /* @var TM\BannerModule\Block\Banner $block */
-
 function UTCToTimestamp($datetime_str) {
     $date = new DateTime($datetime_str);
     return  $date->getTimestamp();

@@ -1,0 +1,66 @@
+version: "3.3"
+
+services:
+
+  mysql:
+    image: mysql:8.0.26
+    container_name: test-api-mysql
+    working_dir: /app
+    volumes:
+      - .:/app
+      - mysql-volume:/var/lib/mysql
+    environment:
+      - MYSQL_PASSWORD=123123123
+      - MYSQL_ROOT_PASSWORD=123123123
+    ports:
+      - "3306:3306"
+
+  nginx:
+    image: nginx:alpine
+    container_name: test-api-nginx
+    working_dir: /app
+    depends_on:
+      - mysql
+    volumes:
+      - .:/app
+      - ./docker/nginx/nginx.conf:/etc/nginx/conf.d/default.conf
+    ports:
+      - "80:80"
+
+  php-fpm:
+    build: ./docker/php-fpm
+    container_name: test-api-php-fpm
+    working_dir: /app
+    depends_on:
+      - mysql
+    volumes:
+      - ./docker/php-fpm/uploads.ini:/usr/local/etc/php/conf.d/uploads.ini
+      - .:/app
+
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.4.0
+    container_name: test-api-elasticsearch
+    environment:
+      - xpack.security.enabled=false
+      - discovery.type=single-node
+    ports:
+      - "9200:9200"
+      - "9300:9300"
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+      nofile:
+        soft: 65536
+        hard: 65536
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: test-api-phpmyadmin
+    environment:
+      - PMA_ARBITRARY=1
+      - PMA_HOST=test-api-mysql
+    ports:
+      - "81:80"
+volumes:
+  mysql-volume:
