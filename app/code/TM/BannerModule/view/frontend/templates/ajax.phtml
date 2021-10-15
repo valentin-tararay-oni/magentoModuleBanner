@@ -8,10 +8,9 @@ function UTCToTimestamp($datetime_str) {
     $date = new DateTime($datetime_str);
     return  $date->getTimestamp();
 }
-
 $banners = $block -> getAllBanners();
 $nowTime = time();
-$arOneShow = explode(',',$block -> getOneShowData());
+$arOneShow = $block -> getOneShowData() ? $block -> getOneShowData() : [];
 
 ?>
 
