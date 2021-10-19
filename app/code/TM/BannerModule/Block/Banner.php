@@ -7,11 +7,7 @@ class Banner extends \Magento\Framework\View\Element\Template
 {
     private $collection;
 
-    public function __construct(
-        \Magento\Framework\View\Element\Template\Context $context,
-        Collection $collection,
-        array $data = []
-    )
+    public function __construct(\Magento\Framework\View\Element\Template\Context $context, Collection $collection, array $data = [])
     {
         parent::__construct($context, $data);
         $this->collection = $collection;

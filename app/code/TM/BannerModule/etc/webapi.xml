@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<routes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Webapi:etc/webapi.xsd">
+    <route url="/V1/api/getById/:num" method="GET">
+        <service class="TM\BannerModule\Api\ApiInterface" method="getById"/>
+        <resources>
+            <resource ref="anonymous"/>
+        </resources>
+    </route>
+    <route url="/V1/api/getData/" method="GET">
+        <service class="TM\BannerModule\Api\ApiInterface" method="getData"/>
+        <resources>
+            <resource ref="TM_BannerModule::products_get"/>
+        </resources>
+    </route>
+
+    <route url="/V1/api/delItem/:num" method="DELETE">
+        <service class="TM\BannerModule\Api\ApiInterface" method="deleteItem"/>
+        <resources>
+            <resource ref="anonymous"/>
+        </resources>
+    </route>
+</routes>
+

@@ -1,7 +1,7 @@
 
 <?php
-/*view templ*/
 
+/*view templ*/
 ini_set('memory_limit', '2048M');
 /* @var TM\BannerModule\Block\Banner $block */
 function UTCToTimestamp($datetime_str) {
@@ -11,17 +11,17 @@ function UTCToTimestamp($datetime_str) {
 $banners = $block -> getAllBanners();
 $nowTime = time();
 $arOneShow = $block -> getOneShowData() ? $block -> getOneShowData() : [];
-
 ?>
-
     <?php
     foreach ($banners as $banner){
 
         if($banner->getImage()){
             $timeFrom = UTCToTimestamp($banner -> getDateFrom());
             $timeTo = UTCToTimestamp($banner -> getDateTo());
-            if($nowTime > $timeTo || $nowTime< $timeFrom || in_array($banner->getId(),$arOneShow)) continue;
-            ?><div><img <?php echo $banner->getOneShow() == 1 ? 'data-oneshow data-id="'.$banner->getId().'"' : ''; ?> src="<?=$banner->getImageUrl();?>"></div><?php
+            if($nowTime > $timeTo || $nowTime < $timeFrom || in_array($banner -> getId(),$arOneShow)) continue;
+            ?><div><img <?php echo $banner->getOneShow() == 1 ? 'data-oneshow data-id="'.$banner->getId().'"' : ''; ?> src="<?=$banner->getImageUrl();?>">
+            <div class="popup"><div class="close"><span class="close-icon">&#215;</span></div><span><?=$banner->getTextOnPopup();?></span></div>
+            </div><?php
             break;
         }
     }

@@ -1,0 +1,18 @@
+.popup{
+    left: 32.5%;
+    position: absolute;
+    top: 29%;
+    background-color: white;
+    width: 20%;
+    height: auto;
+    padding: 15px;
+    display: none;
+    border-radius: 5px;
+}
+.close{
+    text-align: right;
+    height: 15px;
+}
+.close-icon{
+    cursor: pointer;
+}

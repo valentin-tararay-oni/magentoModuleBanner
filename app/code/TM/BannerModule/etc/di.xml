@@ -14,5 +14,5 @@
             <argument name="resourceModel" xsi:type="string">TM\BannerModule\Model\ResourceModel\Banner</argument>
         </arguments>
     </type>
-
+    <preference for="TM\BannerModule\Api\ApiInterface"  type="TM\BannerModule\Model\Api" />
 </config>
