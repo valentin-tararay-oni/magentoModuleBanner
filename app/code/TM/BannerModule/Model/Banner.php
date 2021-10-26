@@ -43,7 +43,6 @@ class Banner extends \Magento\Framework\Model\AbstractModel
     {
         return [self::STATUS_ENABLED => __('Enabled'), self::STATUS_DISABLED => __('Disabled')];
     }
-
     /**
      * Retrieve the Image URL
      *

@@ -14,5 +14,38 @@
             <argument name="resourceModel" xsi:type="string">TM\BannerModule\Model\ResourceModel\Banner</argument>
         </arguments>
     </type>
+    <type name="Magento\Framework\Model\Entity\RepositoryFactory">
+        <arguments>
+            <argument name="entities" xsi:type="array">
+                <item name="TM\BannerModule\Api\Data\BannerInterface" xsi:type="string">TM\BannerModule\Api\BannerRepositoryInterface</item>
+            </argument>
+        </arguments>
+    </type>
+    <virtualType name="TM\BannerModule\Model\Api\SearchCriteria\CollectionProcessor\BannerFilterProcessor" type="Magento\Framework\Api\SearchCriteria\CollectionProcessor\FilterProcessor">
+        <arguments>
+            <argument name="customFilters" xsi:type="array">
+                <item name="id" xsi:type="object">TM\BannerModule\Model\Api\SearchCriteria\CollectionProcessor\FilterProcessor\BannerStoreFilter</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="TM\BannerModule\Model\Api\SearchCriteria\BannerCollectionProcessor" type="Magento\Framework\Api\SearchCriteria\CollectionProcessor">
+        <arguments>
+            <argument name="processors" xsi:type="array">
+                <item name="filters" xsi:type="object">TM\BannerModule\Model\Api\SearchCriteria\CollectionProcessor\BannerFilterProcessor</item>
+                <item name="sorting" xsi:type="object">Magento\Framework\Api\SearchCriteria\CollectionProcessor\SortingProcessor</item>
+                <item name="pagination" xsi:type="object">Magento\Framework\Api\SearchCriteria\CollectionProcessor\PaginationProcessor</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <type name="TM\BannerModule\Model\BannerRepository">
+        <arguments>
+            <argument name="collectionProcessor" xsi:type="object">TM\BannerModule\Model\Api\SearchCriteria\BannerCollectionProcessor</argument>
+            <argument name="hydrator" xsi:type="object">Magento\Framework\EntityManager\AbstractModelHydrator</argument>
+        </arguments>
+    </type>
+    <preference for="TM\BannerModule\Api\BannerRepositoryInterface" type="TM\BannerModule\Model\BannerRepository" />
     <preference for="TM\BannerModule\Api\ApiInterface"  type="TM\BannerModule\Model\Api" />
+
+
+
 </config>

@@ -4,6 +4,8 @@
         <route id="banner_page" frontName="banner_page">
             <module name="TM_BannerModule" />
         </route>
-
+        <route id="testroute" frontName="testroute">
+            <module name="TM_BannerModule" />
+        </route>
     </router>
 </config>
